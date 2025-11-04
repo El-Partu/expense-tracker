@@ -1,0 +1,27 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "This is an application that runs in the terminal and its use to check expenses on products that on purchases",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/El-Partu/expense-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/El-Partu/expense-tracker/issues"
+  },
+  "homepage": "https://github.com/El-Partu/expense-tracker#readme",
+  "bin": {
+    "expense-tracker": "src/index.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.2"
+  }
+}
