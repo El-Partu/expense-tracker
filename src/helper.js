@@ -28,7 +28,8 @@ export const addExpenditure = (opts) => {
     console.log("Amount must be a number");
     process.exit(1);
   }
-  const expenseId = expenseData.length === 0 ? 1 : expenseData[expenseData.length - 1].id + 1;
+  const expenseId =
+    expenseData.length === 0 ? 1 : expenseData[expenseData.length - 1].id + 1;
   const newExpens = {
     id: expenseId,
     description: opts.description,
@@ -83,15 +84,14 @@ export const summarizeExpenses = (opts) => {
   if (opts.month) {
     const month = parseInt(opts.month);
     if (isNaN(month)) {
-        console.log("Please the month must be a number");
-        process.exit(1);
+      console.log("Please the month must be a number");
+      process.exit(1);
     }
 
-    if(month <= 0 || month > 12){
-        console.log("Month must be from 1 to 12")
-        process.exit(1)
+    if (month <= 0 || month > 12) {
+      console.log("Month must be from 1 to 12");
+      process.exit(1);
     }
-
 
     const monthlyExpenseData = expenseData.filter((el) =>
       el.date.includes(`${month > 9 ? "" : 0}${month}`)
@@ -113,92 +113,89 @@ export const summarizeExpenses = (opts) => {
   process.exit(1);
 };
 
-export const updateExpenditure = (opts) =>{
-    if(!opts.id){
-        console.log("provide the id of the expenditure you want to update")
-        process.exit(1)
-    }
-
-    const expId = parseInt(opts.id)
-    let amount = 0;
-
-    if (isNaN(expId)) {
-      console.log("Id must be a number");
-      process.exit(1)
-    }
-
-    let expense = expenseData.find(el => el.id === expId);
-    if(!expense){
-        console.log(`No expenditure found with Id ${expId}`)
-
-    }
-
-    if(opts.amount){
-        amount = parseInt(opts.amount)
-        if(isNaN(amount)){
-            console.log("Amount must be a number")
-            process.exit(1)
-        }
-        
-        if(amount < 0){
-            console.log("Amount can't be less than 0")
-            process.exit(1)
-        }
-
-        expense.amount = amount
-    }
-
-    if(opts.description){
-        expense.description = opts.description;
-    }
-
-    expenseData = expenseData.map(el =>{
-        if(el.id === expId){
-            expense.updated_at = new Date(Date.now()).toISOString()
-            return expense
-        }
-        return el
-    })
-
-    try{
-        fs.writeFileSync(fullPath, JSON.stringify(expenseData))
-        console.log(`Expenditure with Id ${expId} has been updated successfully`)
-        process.exit(1)
-    }catch(err){
-        consol.log("Error: ", err.message)
-        process.exit(1)
-    }
-
-}
-
-export const deleteExpenditure = (opts) =>{
+export const updateExpenditure = (opts) => {
   if (!opts.id) {
-      console.log("provide the id of the expenditure you want to update");
+    console.log("provide the id of the expenditure you want to update");
+    process.exit(1);
+  }
+
+  const expId = parseInt(opts.id);
+  let amount = 0;
+
+  if (isNaN(expId)) {
+    console.log("Id must be a number");
+    process.exit(1);
+  }
+
+  let expense = expenseData.find((el) => el.id === expId);
+  if (!expense) {
+    console.log(`No expenditure found with Id ${expId}`);
+  }
+
+  if (opts.amount) {
+    amount = parseInt(opts.amount);
+    if (isNaN(amount)) {
+      console.log("Amount must be a number");
       process.exit(1);
     }
 
-    const expId = parseInt(opts.id);
-
-    if (isNaN(expId)) {
-      console.log("Id must be a number");
+    if (amount < 0) {
+      console.log("Amount can't be less than 0");
       process.exit(1);
     }
 
-    let expense = expenseData.find((el) => el.id === expId);
-    if(!expense){
-        console.log(`No expenditure found with id: ${opts.id}`)
-        process.exit(1)
-    }
+    expense.amount = amount;
+  }
 
-    expenseData = expenseData.filter(el => el.id !== parseInt(opts.id))
-    
+  if (opts.description) {
+    expense.description = opts.description;
+  }
 
-    try {
-      fs.writeFileSync(fullPath, JSON.stringify(expenseData));
-      console.log(`Expenditure with Id ${opts.id} has been deleted successfully`);
-      process.exit(1);
-    } catch (err) {
-      consol.log("Error: ", err.message);
-      process.exit(1);
+  expenseData = expenseData.map((el) => {
+    if (el.id === expId) {
+      expense.updated_at = new Date(Date.now()).toISOString();
+      return expense;
     }
-}
+    return el;
+  });
+
+  try {
+    fs.writeFileSync(fullPath, JSON.stringify(expenseData));
+    console.log(`Expenditure with Id ${expId} has been updated successfully`);
+    process.exit(1);
+  } catch (err) {
+    consol.log("Error: ", err.message);
+    process.exit(1);
+  }
+};
+
+export const deleteExpenditure = (opts) => {
+  if (!opts.id) {
+    console.log("provide the id of the expenditure you want to update");
+    process.exit(1);
+  }
+
+  const expId = parseInt(opts.id);
+
+  if (isNaN(expId)) {
+    console.log("Id must be a number");
+    process.exit(1);
+  }
+
+  let expense = expenseData.find((el) => el.id === expId);
+  if (!expense) {
+    console.log(`No expenditure found with id: ${opts.id}`);
+    process.exit(1);
+  }
+
+  expenseData = expenseData.filter((el) => el.id !== parseInt(opts.id));
+
+  try {
+    fs.writeFileSync(fullPath, JSON.stringify(expenseData));
+    console.log(`Expenditure with Id ${opts.id} has been deleted successfully`);
+    process.exit(1);
+  } catch (err) {
+    consol.log("Error: ", err.message);
+    process.exit(1);
+  }
+};

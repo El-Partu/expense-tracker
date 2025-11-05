@@ -8,9 +8,8 @@ import {
   updateExpenditure,
 } from "./helper.js";
 
-
 const program = new Command();
-program.exitOverride()
+program.exitOverride();
 
 program
   .name("expense-tracker")
@@ -23,13 +22,13 @@ program
   .option("--description <description>", "Add a description to the expense")
   .option("--amount <amount>", "An expense must have an amount")
   .action((opts) => {
-    addExpenditure(opts)
+    addExpenditure(opts);
   });
 
 //Listing expenses
-program.command("list").action(() =>{
-    listExpenses()
-})
+program.command("list").action(() => {
+  listExpenses();
+});
 
 //Get summary of expenses
 program
@@ -52,9 +51,9 @@ program
 //Delete an expenditure
 program
   .command("delete")
-  .option("--id <id>", "Id of expenditureo")
+  .option("--id <id>", "Id of expenditure")
   .action((opts) => {
     deleteExpenditure(opts);
   });
 
-  program.parse()
+program.parse();
