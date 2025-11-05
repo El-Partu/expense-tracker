@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { addExpenditure, listExpenses, summarizeExpenses } from "./helper.js";
+import {
+  addExpenditure,
+  listExpenses,
+  summarizeExpenses,
+  updateExpenditure,
+} from "./helper.js";
 
 
 const program = new Command();
@@ -31,6 +36,16 @@ program
   .option("--month <month>", "total expenses in a month")
   .action((opts) => {
     summarizeExpenses(opts);
+  });
+
+//Update an expenditure
+program
+  .command("update")
+  .option("--id <id>", "Id of expenditureo")
+  .option("--description <description>", "Add a description to the expense")
+  .option("--amount <amount>", "An expense must have an amount")
+  .action((opts) => {
+    updateExpenditure(opts);
   });
 
   program.parse()
