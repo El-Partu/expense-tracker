@@ -8,20 +8,20 @@ This a simple expense tracker commandline application to manage your finances. T
 `# 1   2024-08-06  Lunch        $20`    
 `# 2   2024-08-06  Dinner       $10`  
 
-3. Use this command to update the amount of an expenditure:  `expense-tracker update --id="<Number>" --amount="<Number>"`  
+3. Use this command to update the amount of an expenditure: `expense-tracker update --id="<Number>" --amount="<Number>"`  
 
-4. Use this command to update the description of an expenditure:  `expense-tracker update --id="<Number>" --description="<description>"`  
+4. Use this command to update the description of an expenditure: `expense-tracker update --id="<Number>" --description="<description>"`  
 `# Expense deleted successfully`  
 
-5. Use this command to update both amount and description of an expenditure:  `expense-tracker update --id="<Number>" --amount="<Number>`  
+5. Use this command to update both amount and description of an expenditure: `expense-tracker update --id="<Number>" --amount="<Number>`  
 
-4. Use this command to delete an expenditure:  `expense-tracker delete --id="<Number>"`  
+4. Use this command to delete an expenditure: `expense-tracker delete --id="<Number>"`  
 `# Expense deleted successfully`  
 
-5. Use this command to get summary of expenditure:  `expense-tracker summary`    
+5. Use this command to get summary of expenditure: `expense-tracker summary`   
 `# Total expenses: $30`  
 
-6. Use this command to get a summary of expenditure in a month:  `expense-tracker summary --month 8`    
+6. Use this command to get a summary of expenditure in a month: `expense-tracker summary --month="<Number"`   
 `# Total expenses for August: $20`  
 
 
