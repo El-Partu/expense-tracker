@@ -1,5 +1,7 @@
 # EXPENSE TRACKER
-This a simple expense tracker commandline application to manage your finances. The application allow users to add, delete, and view their expenses. The application also provide a summary of the expenses.
+This a simple expense tracker commandline application to manage your finances. The application allow users to add, delete, and view their expenses. The application also provide a summary of the expenses.   
+To make the `expense-tracker` run in your terminal run `npm link` to create a link in your node bin folder globally.   
+Project-url: https://roadmap.sh/projects/expense-tracker
 ### COMMANDS ACCEPTED 
 1. Use this command to create and expenditure:  `expense-tracker add --description="<description>" --amount="<Number>"`  
 
