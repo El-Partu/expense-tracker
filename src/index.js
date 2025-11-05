@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { addExpense } from "./helper.js";
+import { addExpenditure, listExpenses } from "./helper.js";
 
 
 const program = new Command();
@@ -17,7 +17,13 @@ program
   .option("--description <description>", "Add a description to the expense")
   .option("--amount <amount>", "An expense must have an amount")
   .action((opts) => {
-    addExpense(opts)
+    addExpenditure(opts)
   });
 
+//Listing expenses
+program.command("list").action(() =>{
+    listExpenses()
+})
+
+//
   program.parse()
