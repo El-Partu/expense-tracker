@@ -172,17 +172,26 @@ export const updateExpenditure = (opts) =>{
 }
 
 export const deleteExpenditure = (opts) =>{
-    if(!opts.id){
-        console.log("Provide the id of the expenditure you want to update")
+  if (!opts.id) {
+      console.log("provide the id of the expenditure you want to update");
+      process.exit(1);
+    }
+
+    const expId = parseInt(opts.id);
+
+    if (isNaN(expId)) {
+      console.log("Id must be a number");
+      process.exit(1);
+    }
+
+    let expense = expenseData.find((el) => el.id === expId);
+    if(!expense){
+        console.log(`No expenditure found with id: ${opts.id}`)
         process.exit(1)
     }
 
     expenseData = expenseData.filter(el => el.id !== parseInt(opts.id))
     
-    if(expenseData.length === 0){
-        console.log(`No expenditure found ${opts.id}`)
-        process.exit(1)
-    }
 
     try {
       fs.writeFileSync(fullPath, JSON.stringify(expenseData));
