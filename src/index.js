@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { addExpenditure, listExpenses } from "./helper.js";
+import { addExpenditure, listExpenses, summarizeExpenses } from "./helper.js";
 
 
 const program = new Command();
@@ -25,5 +25,12 @@ program.command("list").action(() =>{
     listExpenses()
 })
 
-//
+//Get summary of expenses
+program
+  .command("summary")
+  .option("--month <month>", "total expenses in a month")
+  .action((opts) => {
+    summarizeExpenses(opts);
+  });
+
   program.parse()
