@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": 1,
+    "description": "Aki-Ola textbook",
+    "amount": "20",
+    "date": "2025-11-05T07:22:16.795Z"
+  },
+  {
+    "id": 2,
+    "description": "Sweet bite",
+    "amount": "30",
+    "date": "2025-11-05T07:23:45.423Z"
+  },
+  {
+    "id": 3,
+    "description": "Dinner",
+    "amount": "10",
+    "date": "2025-11-05T07:31:44.913Z"
+  },
+  {
+    "id": 4,
+    "description": "Lunch",
+    "amount": "20",
+    "date": "2025-11-05T07:35:21.597Z"
+  }
+]
