@@ -2,6 +2,7 @@
 import { Command } from "commander";
 import {
   addExpenditure,
+  deleteExpenditure,
   listExpenses,
   summarizeExpenses,
   updateExpenditure,
@@ -46,6 +47,14 @@ program
   .option("--amount <amount>", "An expense must have an amount")
   .action((opts) => {
     updateExpenditure(opts);
+  });
+
+//Delete an expenditure
+program
+  .command("delete")
+  .option("--id <id>", "Id of expenditureo")
+  .action((opts) => {
+    deleteExpenditure(opts);
   });
 
   program.parse()
