@@ -29,7 +29,7 @@ export const addExpenditure = (opts) => {
     process.exit(1);
   }
   const expenseId = expenseData.length === 0 ? 1 : expenseData.length + 1;
-  const newExpex = {
+  const newExpens = {
     id: expenseId,
     description: opts.description,
     amount: opts.amount,
@@ -37,7 +37,7 @@ export const addExpenditure = (opts) => {
     updated_at: null
   };
 
-  expenseData.push(newExpex);
+  expenseData.push(newExpens);
 
   try {
     fs.writeFileSync(fullPath, JSON.stringify(expenseData));
